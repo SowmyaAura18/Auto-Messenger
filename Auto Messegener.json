@@ -1,0 +1,227 @@
+{
+  "name": "Auto Messegener",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "90a46f60-4979-4fcc-8388-a0a6bf6e003b",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "query": "new  ai  tools ",
+        "options": {
+          "search_depth": "advanced"
+        }
+      },
+      "type": "@tavily/n8n-nodes-tavily.tavily",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "6e274e88-ff3e-4680-98f6-f51971e04004",
+      "name": "Search",
+      "credentials": {
+        "tavilyApi": {
+          "id": "f2D7pi9JLLbiUvVu",
+          "name": "Tavily account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.results }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "7f306c56-0bf2-45dd-8e4d-87e0566d1f88",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        288,
+        208
+      ],
+      "id": "55b95d7b-aa32-4c44-ab5a-1ca604bd3b94",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ujUKMUMwH46AHdeU",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "sowmyayadav929@gmail.com",
+        "subject": "={{ $('Search').item.json.query }}",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "6e48ca38-0c0e-4be8-a04f-c4fe06623bb7",
+      "name": "Send a message",
+      "webhookId": "2d8a7d80-6039-447b-9d07-cb007db3f4c3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VtbS6ES7YOz3BtaI",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Search": [
+      {
+        "json": {
+          "query": "new  ai  tools",
+          "response_time": 1.03,
+          "follow_up_questions": null,
+          "answer": null,
+          "images": [],
+          "results": [
+            {
+              "url": "https://www.youtube.com/watch?v=SRJi_CLnj4Q",
+              "title": "6 Insane AI Tools for 2026 (don't fall behind) - YouTube",
+              "content": "Join Our Community →  Apply for Lerty Agency+ →  The 6 best AI tools you need in 2026, from voice cloning and AI coding to workflow automation and open-source AI models. In this video I break down ElevenLabs for AI voice cloning and sound design, Claude Code for AI app development and terminal-based coding, Whisper Flow for speech-to-text dictation, n8n for no-code AI workflow automation, OpenRouter for accessing 600+ AI models through one API, and Lerty AI for building AI agent platforms for teams and clients. Whether you're building AI automations, deploying apps with Claude Code, or selling AI agent services to businesses, these are the tools powering the new AI economy. I walk through real demos, pricing, and use cases for each tool so you can start using them today. Links mentioned [...] ElevenLabs: \n   Claude Code: \n   Whisper Flow: \n   n8n: \n   OpenRouter: \n   Lerty AI: \n   Courses: [...] tool so you can start using them today. Links mentioned in this video:",
+              "score": 0.9995956,
+              "raw_content": null
+            },
+            {
+              "url": "https://medium.com/artificial-corner/the-best-ai-tools-for-2026-933535a44f8b",
+              "title": "The Best AI Tools for 2026 - Medium",
+              "content": "The Best AI Tools for 2026. If you’re going to learn a new AI tool… | by The PyCoach | Artificial Corner | Medium\n\nSitemap\n\nOpen in app\n\nSign up\n\nSign in\n\n\n\nMember-only story\n\nFeatured\n\nThe Best AI Tools for 2026\n\nIf you’re going to learn a new AI tool, make sure it’s one of these\n\nImage 3: The PyCoach\n\nThe PyCoach\n\n8 min read\n\n·\n\nDec 1, 2025\n\n\n\nWithout a doubt, ChatGPT, Gemini, and Claude are the best AI tools to date. They can provide answers to your everyday questions, do web searches, help with writing, and more.\n\nHere’s what they’re best at:\n\n   ChatGPT: Best at casual use, deep research, and voice mode\n   Claude: Best at writing, instruction following, and task automation\n   Gemini: Best at image and video generation. Great…\n\n\n\nImage 7: The PyCoach\n\nImage 8: The PyCoach",
+              "score": 0.99916387,
+              "raw_content": null
+            },
+            {
+              "url": "https://www.reddit.com/r/automation/comments/1ppx24y/what_new_ai_tools_are_worth_checking_out_right_now/",
+              "title": "What new AI tools are worth checking out right now? - Reddit",
+              "content": "Best AI apps and tools for work\n\nMost frequently used AI tools currently\n\nBest AI web design tools available\n\nPopular AI website builders to consider\n\nNew to Reddit? \nCreate your account and connect with a world of communities.\n\n Continue with Email \n\n Continue With Phone Number \n\nBy continuing, you agree to ourUser Agreementand acknowledge that you understand thePrivacy Policy. \n\n Public \n\nAnyone can view, post, and comment to this community\n\n0 0\n\nReddit RulesPrivacy PolicyUser AgreementYour Privacy ChoicesAccessibilityReddit, Inc. © 2026. All rights reserved.\n\nExpand Navigation Collapse Navigation\n\n   &nbsp; \n   &nbsp; \n   &nbsp; \n\n  \n\n  \n\n   RESOURCES \n\n   About Reddit\n   Advertise\n   Developer Platform\n   Reddit Pro BETA\n   Help\n   Blog\n   Careers\n   Press [...] What new AI tools are worth checking out right now? : r/automation\n\nSkip to main contentWhat new AI tools are worth checking out right now? : r/automation\n\nOpen menu Open navigation[]( to Reddit Home\n\nr/automation\n\nGet App Get the Reddit app Log InLog in to Reddit\n\nExpand user menu Open settings menu\n\nImage 1 Go to automation\n\nr/automation•3mo ago\n\nInevitableCamera-\n\nWhat new AI tools are worth checking out right now?\n\nLooking for fresh or lesser-known AI products people are genuinely using, any recent finds?\n\nEdited: Found a dupe-finding tool Savyo Al someone mentioned in the comments and tried it out, worked pretty well.\n\n Read more \n\n Share \n\nRelated Answers Section\n\n Related Answers \n\nRecent finds in lesser-known AI products\n\nBest AI apps and tools for work",
+              "score": 0.9978677,
+              "raw_content": null
+            },
+            {
+              "url": "https://zapier.com/blog/best-ai-productivity-tools/",
+              "title": "The best AI productivity tools in 2026 - Zapier",
+              "content": "Knowledge management and AI grounding (Mem, Notion,Evernote)\n\n   Task and project management (Asana, ClickUp, Hive)\n\n   Transcription and meeting assistants (Fireflies, Avoma, Granola)\n\n   Scheduling (Reclaim, Clockwise, Motion)\n\n   Email (Shortwave, Microsoft Copilot Pro for Outlook, Gemini for Gmail)\n\n   Slide decks and presentations (Gamma, Canva, Beautiful.ai)\n\n   Resume builders (Teal, Enhancv, Kickresume)\n\n   Other AI productivity tools\n\nHow I selected the best AI productivity app in each category\n\nIt seems like every time I turn around, there are a dozen more AI tools clamoring for attention. And the tools I've used for years—like Notion, Canva, Grammarly, and (against my will) Microsoft—have added AI features and assistants to their platforms. [...] Runway is a video magic wand. It has a set of interesting features that help you generate video with AI, train your own models, and paint parts of frames using text prompts. The new Gen-4 model can combine visual references with instructions to generate new images and videos in consistent styles and locations. It's a big step up in AI video generation, making it one of the best commercially available solutions. The learning curve is very rewarding, and the app is growing at a great pace. [...] Zapier Agents: intelligent, self-directed AI teammates that can take multi-step actions across your tech stack. Agents can handle anything from drafting emails to preparing reports, and they work across apps autonomously. You can even use the Chrome extension to trigger them from anywhere on the web.\n\n   Chatbots by Zapier: custom, no-code bots trained on your own content—like a help center or website—that can answer questions, guide customers, or handle internal requests. You can set them to automatically check for new updates so they always stay current.",
+              "score": 0.9975466,
+              "raw_content": null
+            },
+            {
+              "url": "https://www.reddit.com/r/GeminiAI/comments/1qe5a0x/what_are_the_most_useful_ai_tools_in_2026_heres/",
+              "title": "What Are the Most Useful AI Tools in 2026? Here's What I Actually ...",
+              "content": "1. Winston AI – Easily the most reliable AI detector I’ve used. It clearly shows which parts of a text are AI generated vs human written. Great for academic work, writing checks, and content review. If you're in education or content creation, this one's a must-have.\n\n2. GPTHuman AI – This is the best AI humanizer I’ve tried. If you have AI-generated text and want it to sound more natural or pass AI detectors, this tool does the job really well. Makes the tone more human without overdoing it.\n\n3. ChatGPT – My daily go-to for ideas, drafting, and asking random questions. Pretty much my digital sidekick at this point.\n\n4. Claude & Gemini – Helpful for school related tasks and longer writing. Gemini’s also decent for quick AI image generation when I need simple visuals. [...] 5. Suno – Fun tool for making music. It’s been great for experimenting with sound and getting creative breaks from school or work.\n\n6. Gensmo – I use this for quick outfit ideas when I’m feeling lazy. Surprisingly good at putting things together that I wouldn’t think of.\n\n7. Notion AI – Still one of the best for organizing projects, taking smart notes, and staying focused.\n\nThere’s a lot of hype around AI, but honestly, only a few tools make it into my regular workflow. What about you? Which ones are actually useful in your day to day?\n\n Read more \n\n Share \n\nRelated Answers Section\n\n Related Answers \n\n Most useful AI tools in 2026 [...] Gemini Advanced: Solid if you’re tied into the Google ecosystem. \"Gemini Advanced - solid if you’re tied into Google stuff.\"\n\n### Subreddits for Further Exploration\n\n   r/AI_Tools_Guide\n\n   r/AI_Agents\n\n   r/AI_Tips_Tricks\n\nThese communities are great places to ask more specific questions and get up-to-date recommendations from fellow AI enthusiasts.\n\nSee Answer\n\nBest tools to detect AI-generated images\n\nInnovative applications of AI in healthcare\n\nBest programming languages for AI development\n\nHow AI is transforming creative industries\n\nNew to Reddit? \nCreate your account and connect with a world of communities.\n\n Continue with Email \n\n Continue With Phone Number \n\nBy continuing, you agree to ourUser Agreementand acknowledge that you understand thePrivacy Policy. \n\n Public",
+              "score": 0.99711037,
+              "raw_content": null
+            }
+          ],
+          "request_id": "8c587e66-204f-49de-8fb2-01d01aa11050"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "AI Agent": [
+      {
+        "json": {
+          "output": "Based on the provided content, the best AI tools for 2026 span various categories, from general-purpose assistants to specialized development and automation platforms.\n\nHere's a breakdown of the most frequently mentioned and highly-rated AI tools for 2026:\n\n**1. General-Purpose AI Models / Large Language Models (LLMs):**\n*   **ChatGPT:** Best for casual use, deep research, and voice mode. (Medium, Reddit)\n*   **Claude:** Excels in writing, instruction following, and task automation. Also helpful for school-related tasks and longer writing. (Medium, Reddit)\n*   **Gemini:** Strong in image and video generation. Decent for quick AI image generation and solid if integrated into the Google ecosystem (Gemini Advanced). (Medium, Reddit, Zapier)\n\n**2. AI for Coding & App Development:**\n*   **Claude Code:** For AI app development and terminal-based coding. (YouTube)\n\n**3. AI for Workflow Automation & Agents:**\n*   **n8n:** A no-code AI workflow automation tool. (YouTube)\n*   **Zapier Agents:** Intelligent, self-directed AI teammates that can perform multi-step actions across your tech stack, from drafting emails to preparing reports autonomously. (Zapier)\n*   **Chatbots by Zapier:** Custom, no-code bots trainable on your own content (help centers, websites) to answer questions, guide customers, or handle internal requests. (Zapier)\n*   **Lerty AI:** For building AI agent platforms for teams and clients. (YouTube)\n\n**4. AI for Voice & Sound:**\n*   **ElevenLabs:** For AI voice cloning and sound design. (YouTube)\n*   **Whisper Flow:** For speech-to-text dictation. (YouTube)\n*   **Suno:** A fun tool for making music and experimenting with sound. (Reddit)\n\n**5. AI for Productivity & Content Creation (Specialized):**\n*   **Notion AI:** Excellent for organizing projects, taking smart notes, and staying focused. (Reddit, Zapier)\n*   **Mem, Evernote (with AI features):** For knowledge management and AI grounding. (Zapier)\n*   **Fireflies, Avoma, Granola:** Transcription and meeting assistants. (Zapier)\n*   **Runway (Gen-4 model):** A significant step up in AI video generation, helping generate video with AI and train models. (Zapier)\n*   **Gamma, Canva, Beautiful.ai (with AI features):** For slide decks and presentations. (Zapier)\n*   **Shortwave, Microsoft Copilot Pro for Outlook, Gemini for Gmail:** AI tools for email. (Zapier)\n*   **Reclaim, Clockwise, Motion:** AI tools for scheduling. (Zapier)\n*   **Teal, Enhancv, Kickresume:** AI resume builders. (Zapier)\n\n**6. AI for Text Analysis & Humanization:**\n*   **Winston AI:** A reliable AI detector that shows which parts of text are AI-generated vs. human-written. (Reddit)\n*   **GPTHuman AI:** For humanizing AI-generated text to sound more natural and pass AI detectors. (Reddit)\n\n**7. AI for Model Access & Integration:**\n*   **OpenRouter:** For accessing over 600 AI models through a single API. (YouTube)\n\n**8. Niche / Specific Utility AI:**\n*   **Gensmo:** For quick outfit ideas. (Reddit)\n*   **Savyo AI:** A dupe-finding tool. (Reddit)\n\nIn summary, the AI landscape in 2026 is characterized by powerful LLMs (ChatGPT, Claude, Gemini), advanced automation platforms (n8n, Zapier Agents), sophisticated content creation tools (ElevenLabs, Runway, Suno), and specialized assistants that integrate AI into existing productivity workflows (Notion AI, Copilot, Fireflies)."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "72ca039f-a17d-4763-9f02-294383ff0900",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a4f29e45eb6207be7208411616d29afc20411cb9ee322b532aa6cbd37d0f98a"
+  },
+  "id": "jzWVYU6A3vdXKXE5",
+  "tags": []
+}
